@@ -1,10 +1,11 @@
 # ForgeCLI
 
-Allow Forge Installer to install Minecraft 1.13+ with Forge via command-line.
+Allow Forge Installer to install Minecraft with Forge via command-line.
+Now also supports versions < 1.13 through a bytecode hack.
 
 ## How to use
 
-1. Download Forge installer for Minecraft 1.13+ [here](https://files.minecraftforge.net/).
+1. Download Forge installer for Minecraft [here](https://files.minecraftforge.net/).
 2. Download ForgeCLI jar file at the [release](https://github.com/TeamKun/ForgeCLI/releases) page.
 3. Run the below command in terminal:
    ```

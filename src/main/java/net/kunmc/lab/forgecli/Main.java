@@ -26,7 +26,7 @@ public class Main {
             System.exit(1);
             return;
         }
-        try (URLClassLoader ucl = URLClassLoader.newInstance(new URL[]{
+        try (URLClassLoader ucl = new InstallerClassLoader(new URL[]{
                 Main.class.getProtectionDomain().getCodeSource().getLocation(),
                 installerJar.toUri().toURL()
         }, getParentClassLoader())) {
