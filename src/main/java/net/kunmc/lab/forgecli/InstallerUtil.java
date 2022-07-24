@@ -2,6 +2,7 @@ package net.kunmc.lab.forgecli;
 
 import net.kunmc.lab.forgecli.impl.ClientInstall;
 import net.kunmc.lab.forgecli.impl.LegacyClientInstall;
+import net.minecraftforge.installer.SimpleInstaller;
 import net.minecraftforge.installer.actions.ActionCanceledException;
 import net.minecraftforge.installer.actions.ProgressCallback;
 import net.minecraftforge.installer.json.Install;
@@ -18,6 +19,9 @@ public class InstallerUtil {
             } catch (ClassNotFoundException e) {
                 v1 = false;
             }
+
+            SimpleInstaller.headless = true;
+
             if (v1) {
                 Install profile = ClientInstall.loadInstallProfile();
                 return new ClientInstall(profile, monitor).run(target, input -> true, installerJar);
@@ -29,4 +33,5 @@ public class InstallerUtil {
             throw new RuntimeException(e);
         }
     }
+
 }
