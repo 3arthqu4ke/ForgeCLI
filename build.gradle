@@ -70,6 +70,8 @@ publishing {
             version "${project.version}"
 
             from components.java
+            artifact tasks.jar
+            artifact tasks.shadowJar
         }
     }
     repositories {
