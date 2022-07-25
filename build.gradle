@@ -71,6 +71,14 @@ publishing {
 
             from components.java
             artifact tasks.jar
+        }
+
+        shadow(MavenPublication) {
+            groupId "${project.group}"
+            artifactId "${project.archivesBaseName}-all"
+            version "${project.version}"
+
+            from components.java
             artifact tasks.shadowJar
         }
     }
