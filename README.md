@@ -1,7 +1,8 @@
 # ForgeCLI
 
 Allow Forge Installer to install Minecraft with Forge via command-line.
-Now also supports versions < 1.13 through a bytecode hack.
+
+Fork customized for [HeadlessMc](https://github.com/3arthqu4ke/HeadlessMc), adds support for versions < 1.13.
 
 ## How to use
 
