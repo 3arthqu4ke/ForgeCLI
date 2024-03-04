@@ -1,8 +1,7 @@
-
 plugins {
     id "java"
     id "maven-publish"
-    id 'com.github.johnrengelman.shadow' version '5.0.0'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 sourceCompatibility = targetCompatibility = 1.8
@@ -22,7 +21,10 @@ configurations {
 
 shadowJar {
     configurations = [project.configurations.shadow]
+    exclude 'module-info.class'
+    archiveClassifier = 'all'
 }
+
 tasks.assemble.dependsOn(shadowJar)
 
 repositories {
@@ -66,13 +68,13 @@ publishing {
     publications {
         shadow(MavenPublication) {
             groupId "${project.group}"
-            artifactId "${project.archivesBaseName}"
+            artifactId "${project.archivesBaseName.toLowerCase()}"
             version "${project.version}"
 
             from components.java
-            artifact tasks.shadowJar
         }
     }
+
     repositories {
         maven {
             url = layout.buildDirectory.dir("maven")
@@ -80,6 +82,7 @@ publishing {
     }
 
 }
+
 tasks.publish.dependsOn build
 
 static String getVersionSuffix() {
@@ -88,5 +91,5 @@ static String getVersionSuffix() {
     } else if (System.getenv("GITHUB_RUN_NUMBER") != null && System.getenv("GITHUB_SHA") != null) {
         return "-s." + System.getenv("GITHUB_RUN_NUMBER") + "-" + System.getenv("GITHUB_SHA").substring(0, 7)
     }
-    return "-LOCAL"
+    return "-local"
 }
