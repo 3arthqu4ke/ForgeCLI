@@ -34,7 +34,7 @@ public class InstallerUtil {
         } catch (ActionCanceledException e) {
             throw new RuntimeException(e);
         } catch (Throwable throwable) {
-            throwable.printStackTrace();
+            throwable.printStackTrace(System.out);
             return tryNew2_2Install(monitor, target, installerJar);
         }
     }

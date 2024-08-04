@@ -14,7 +14,7 @@ public class Installer {
                 return true;
             }
         } catch (Throwable throwable) {
-            throwable.printStackTrace();
+            throwable.printStackTrace(System.out);
             if (Boolean.parseBoolean(System.getProperty("forgecli.retry",
                                                         "false"))) {
                 return false;
